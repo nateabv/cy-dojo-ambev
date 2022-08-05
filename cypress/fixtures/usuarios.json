@@ -1,0 +1,16 @@
+[
+    {
+        "usuario": "Fábio",
+        "senha": "teste@123"
+    },
+    {
+        "usuario": "Amanda",
+        "senha": "teste@123", 
+        "perfil": "admin"
+    },
+    {
+        "usuario": "nathan@nathan.com",
+        "senha": "123456"
+    }
+
+]
