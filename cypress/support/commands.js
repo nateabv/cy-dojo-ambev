@@ -85,3 +85,16 @@ Cypress.Commands.add('criar_perfil',
     }
     cy.get('[data-test="profile-submit"]').click()
 })
+
+Cypress.Commands.add('token', (email, senha) => {
+    cy.request({
+        method: 'POST',
+        url: '/api/auth',
+        body: {
+            "email": email,
+            "password": senha
+        }
+    }).then((response) =>{
+        return response.body.jwt
+    })
+})
