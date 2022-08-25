@@ -25,7 +25,7 @@ describe('Funcionalidade: Perfil via API', () => {
             let token = response.body.jwt
 
             cy.request({
-                methor: 'GET',
+                method: 'GET',
                 url: 'api/profile/me',
                 headers: {
                     Cookie: token
@@ -42,7 +42,7 @@ describe('Funcionalidade: Perfil via API', () => {
 
     it.only('Deve consultar perfil do usuário com token dinâmico', () => {
         cy.request({
-            methor: 'GET',
+            method: 'GET',
             url: 'api/profile/me',
             headers: {
                 Cookie: token
