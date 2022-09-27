@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
-const faker = require('faker-br');
-
+//const faker = require('faker-br'); //faker nao funciona
+import cadastroPage from "../../support/pages/cadastro.page"
 
 describe('Funcionalidade: Cadastro', () => {
 
@@ -10,8 +10,8 @@ describe('Funcionalidade: Cadastro', () => {
 
     it('Cadastro com sucesso', () => {
         
-        let  nome = 'Nathan ' + faker.name.lastName();
-        let  email = faker.internet.email(nome);
+        //let  nome = 'Nathan ' + faker.name.lastName(); //faker nao funciona
+        //let  email = faker.internet.email(nome); //faker nao funciona
 
         cy.get('[data-test="register-name"] > .MuiInputBase-root > .MuiInputBase-input').type(nome)
         cy.get('[data-test="register-email"] > .MuiInputBase-root > .MuiInputBase-input').type(email)
@@ -24,9 +24,11 @@ describe('Funcionalidade: Cadastro', () => {
         cy.contains(nome).should('exist')
     });
 
-    it.only('Deve validar mensagem quando cadastrar com email repetido', () => {
-        let nome = 'Nathan ' + faker.name.lastName();
-        let email = faker.internet.email(nome);
+    it('Deve validar mensagem quando cadastrar com email repetido', () => {
+        //let nome = 'Nathan ' + faker.name.lastName(); //faker nao funciona
+        //let email = faker.internet.email(nome); //faker nao funciona
+        let nome = 'Nathan';
+        let email = 'testenateabv'+Math.floor(Math.random() * 100)+'@nateabv.com.br';
         cy.cadastro(nome, email, 'teste@123', 'teste@123')
         cy.get('[data-test="navbar-logout"]').click() //logout
         cy.cadastro(nome, email, 'teste@123', 'teste@123')
@@ -34,5 +36,12 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('[data-test="alert"]').should('contain', 'Usuário já registrado')
     });
 
-
+    it.only('Deve fazer cadastro com sucesso - Usando Pages', () => {
+        let nome = 'Nathan';
+        let email = 'testenateabv'+Math.floor(Math.random() * 100)+'@nateabv.com.br';
+        cadastroPage.cadastro(nome,email,'teste@123','teste@123')
+        
+        cy.get('.large').should('contain' , 'Dashboard')
+        cy.contains(nome).should('exist')
+    });
 });

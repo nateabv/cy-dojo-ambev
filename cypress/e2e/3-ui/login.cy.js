@@ -24,5 +24,9 @@ describe('Funcionalidade: Login', () => {
         cy.get('.large').should('contain', 'Dashboard')
     });
 
+    it.only('Deve fazer login com sucesso - Usando App Actions', () => {
+        cy.loginAPP(usuarios[2].usuario,usuarios[2].senha)
+        cy.visit('dashboard')
+    });
     
 });

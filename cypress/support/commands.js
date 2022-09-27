@@ -98,3 +98,17 @@ Cypress.Commands.add('token', (email, senha) => {
         return response.body.jwt
     })
 })
+
+Cypress.Commands.add('loginAPP', (email, senha) => {
+    cy.request({
+        method: 'POST',
+        url: '/api/auth',
+        body: {
+            "email": email,
+            "password": senha
+        }
+    }).then((response) =>{
+        //return response.body.jwt
+        cy.setCookie('jwt',response.body.jwt)
+    })
+})
