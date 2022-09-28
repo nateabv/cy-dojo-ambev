@@ -9,6 +9,7 @@
         "perfil": "admin"
     },
     {
+        "nome": "Nathan Teste",
         "usuario": "nathan@nathan.com",
         "senha": "123456"
     }
